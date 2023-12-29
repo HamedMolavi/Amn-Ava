@@ -44,7 +44,7 @@ router.use(
   }),
   bodyParser.text({ limit: "200mb" }),
   fileUpload(),
-  setupLogger(),
+  setupLogger("[REST]"),
   localVarMiddleware, //local variables setup
 );
 

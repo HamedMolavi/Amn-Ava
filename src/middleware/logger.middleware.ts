@@ -46,8 +46,8 @@ The available formats are:
 // status: res.statusCode,
 // message: res.statusMessage,
 
-export function setupLogger() {
-  const deniedLogStream = rfs.createStream('error.log', {
+export function setupLogger(prefix?:string) {
+  const deniedLogStream = rfs.createStream(`${!prefix?"":prefix}error.log`, {
     interval: '1d', // rotate daily
     path: requestLogDir
   });

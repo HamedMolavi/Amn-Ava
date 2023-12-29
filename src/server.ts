@@ -11,6 +11,7 @@ import app from "./apps/REST.Application";
 import setup from "./setups/index";
 import { runInClusterMode } from "./tools/interactive.tools";
 import { httpErrorHandler } from "./error/http.error";
+import WebSocketServer from "./apps/SocketIO.Application";
 
 
 async function main() {
@@ -32,6 +33,7 @@ async function main() {
       return { httpServer, httpsServer };
     })
     .then(({ httpServer, httpsServer })=>{
+      const wss = WebSocketServer(httpServer);
       
     })
 };
