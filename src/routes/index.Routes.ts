@@ -3,7 +3,6 @@ import appRoutes from "./user/index.Routes";
 import authRoutes from "./auth/index.Routes";
 
 import { passportGate } from "../authentication/authorize.auth";
-import { Access } from "../types/enums/access.enum";
 
 const router: Router = Router();
 

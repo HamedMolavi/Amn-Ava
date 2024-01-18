@@ -10,9 +10,11 @@ export default async () => {
 async function makeSeedUser(): Promise<IUser | undefined> {
   if (!(await read(User, { query: { role: 'admin' } })).length) {
     const users: IUser[] = await create(User, {
+      firstName: 'admin',
+      lastName: 'admin',
       username: 'admin',
       password: 'admin',
-      phone_number: '09330379999',
+      phoneNumber: '09330379999',
       role: 'admin',
     });
     console.log("\t++ Seed data user: username=admin, password=admin");
