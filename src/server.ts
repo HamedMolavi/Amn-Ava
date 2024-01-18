@@ -32,9 +32,9 @@ async function main() {
       ////////////////////////////////////////////////////////////////////////////
       return { httpServer, httpsServer };
     })
-    .then(({ httpServer, httpsServer })=>{
+    .then(({ httpServer, httpsServer }) => {
       const wss = WebSocketServer(httpServer);
-      
+
     })
 };
 

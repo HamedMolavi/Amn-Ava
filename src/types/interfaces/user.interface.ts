@@ -9,7 +9,6 @@ export interface IUser {
   username: string;
   password: string;
   phoneNumber: string;
-  role: string;
   createdDate: Date;
 };
 

@@ -12,7 +12,6 @@ const UserSchema: Schema<IUserDocument> = new Schema(
     username: { type: String, required: true },
     password: { type: String, required: true },
     phoneNumber: { type: String, required: true },
-    role: { type: String, default: "user" },
     createdDate: { type: Date, default: Date.now },
   },
   {

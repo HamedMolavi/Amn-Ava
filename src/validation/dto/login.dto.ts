@@ -18,3 +18,8 @@ export class LoginBodyDto {
   //@IsString()
   public is_remember?: string | boolean;
 }
+
+export class ResetPasswordBody {
+  @IsString()
+  public password?: string;
+};

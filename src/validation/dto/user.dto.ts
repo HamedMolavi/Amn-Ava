@@ -23,7 +23,5 @@ export class UpdateUserBody {
   @IsString()
   public username?: string;
   @IsString()
-  public password?: string;
-  @IsString()
   public phoneNumber?: string;
 };
