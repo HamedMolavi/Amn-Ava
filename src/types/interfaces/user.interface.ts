@@ -8,8 +8,8 @@ export interface IUser {
   lastName: string;
   username: string;
   password: string;
-  phoneNumber: string;
-  createdDate: Date;
+  email: string;
+  createdAt: number;
 };
 
 export interface IUserDocument extends IUser, Document {

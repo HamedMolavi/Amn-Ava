@@ -24,7 +24,7 @@ router.get("/:id",
 router.patch("/:id",
   dtoValidationMiddleware(UpdateUserBody, { skipMissingProperties: true, detailedMassage: process.env["NODE_ENV"] === "development" ? true : false, info: "please fill all fields" }),
   updateByIdMiddleware(User, {
-    ignore: ["password"],
+    ignore: ["password", "email"],
   })
 );
 

@@ -1,4 +1,4 @@
-import { IsString} from "class-validator";
+import { IsEmail, IsString} from "class-validator";
 import { Schema } from "mongoose";
 
 
@@ -11,8 +11,9 @@ export class CreateUserBody {
   public username?: string;
   @IsString()
   public password?: string;
+  @IsEmail()
   @IsString()
-  public phoneNumber?: string;
+  public email?: string;
 };
 
 export class UpdateUserBody {
@@ -23,5 +24,5 @@ export class UpdateUserBody {
   @IsString()
   public username?: string;
   @IsString()
-  public phoneNumber?: string;
+  public email?: string;
 };

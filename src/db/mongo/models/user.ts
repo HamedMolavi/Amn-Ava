@@ -11,8 +11,8 @@ const UserSchema: Schema<IUserDocument> = new Schema(
     lastName: { type: String, required: true },
     username: { type: String, required: true },
     password: { type: String, required: true },
-    phoneNumber: { type: String, required: true },
-    createdDate: { type: Date, default: Date.now },
+    email: { type: String, required: true },
+    createdAt: { type: Number, default: Date.now },
   },
   {
     collection: "User",

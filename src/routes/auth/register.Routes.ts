@@ -14,10 +14,10 @@ const router: Router = Router();
 //add route for register new user
 router.post("",
   dtoValidationMiddleware(CreateUserBody, { skipMissingProperties: false, detailedMassage: process.env["NODE_ENV"] === "development" ? true : false, info: "please fill all fields" }),
-  existCheck(User, { $or: [{ username: "username" }, { phone_number: "phone_number" }] }, "User or Phone number already exists!"),
+  existCheck(User, { $or: [{ username: "username" }, { email: "email" }] }, "User or Email already exists!"),
   //verify password strength
   passwordValidator(UserPasswordRequirements),
-  createMiddleware(["username", "password", "phone_number", "firstName", "lastName"], User),
+  createMiddleware(["username", "password", "email", "firstName", "lastName"], User),
 );
 
 export default router;
