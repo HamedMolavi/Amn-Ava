@@ -3,7 +3,7 @@ import User from "../../db/mongo/models/user";
 import { UserPasswordRequirements } from "../../types/interfaces/user.interface";
 import { dtoValidationMiddleware } from "../../validation/dto";
 import { UpdateUserBody } from "../../validation/dto/user.dto";
-import { passwordValidator } from "../../validation/password";
+import { passwordValidatorMiddleware } from "../../validation/password";
 import { readByIdMiddleware, readMiddleware } from "../../db/mongo/read.database";
 import { updateByIdMiddleware } from "../../db/mongo/update.database";
 import { deleteByIdMiddleware } from "../../db/mongo/delete.database";

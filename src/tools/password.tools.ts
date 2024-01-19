@@ -8,7 +8,7 @@ export class ValidatePassword implements IValidatePassword {
   }
   // strength password verify
   getStrength(password: string): number {
-    let multiplier = password.length > 5 ? 0 : 1;
+    let multiplier = password.length > 6 ? 0 : 1;
 
     this.requirements.forEach((requirement) => {
       if (!requirement.re.test(password)) {

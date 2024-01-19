@@ -1,6 +1,7 @@
 import { Router } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
+import flash from "connect-flash";
 import cookieParser from "cookie-parser";
 import passport from "passport";
 import fileUpload from "express-fileupload";
@@ -31,6 +32,7 @@ router.use([
   cookieParser(),
   authHeaderExtraction,
   sessionMiddleware,
+  flash(),
   passport.initialize(),
   passport.session(),
 ]);
