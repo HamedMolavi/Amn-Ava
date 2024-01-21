@@ -1,5 +1,7 @@
 import { Router } from "express";
-import appRoutes from "./user/index.Routes";
+import usersRoutes from "./user/index.Routes";
+import chatsRoutes from "./chat/index.Routes";
+import messagesRoutes from "./message/index.Routes";
 import authRoutes from "./auth/index.Routes";
 
 import { passportGate } from "../authentication/authorize.auth";
@@ -13,6 +15,8 @@ router.use("/auth", authRoutes);
 router.use(passportGate);
 
 //add rotes app
-router.use("/api", appRoutes);
+router.use("/users", usersRoutes);
+router.use("/chats", chatsRoutes);
+router.use("/messages", messagesRoutes);
 
 export default router;
