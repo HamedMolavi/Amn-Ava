@@ -16,7 +16,7 @@ import WebSocketServer from "./apps/SocketIO.Application";
 
 async function main() {
   setup()
-    .then(_ => {
+    .then(setups => {
       const { OPTIONS, PORT_HTTPS, PORT_HTTP, HOST } = process.env;
       //                             SETUP YOUR SERVERS
       ////////////////////////////////////////////////////////////////////////////

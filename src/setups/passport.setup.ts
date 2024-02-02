@@ -10,7 +10,7 @@ if coockie session detected -> deserializeUser() => authenticate() => serializeU
 */
 
 //create local strategy for passport authentication (login) with username and password
-export function setUpPassport() {
+export function setupPassport() {
   // persistent login sessions for authenticated user
   passport.serializeUser(function (user: any, done: Function) {
     done(null, user._id); // which data of the user object should be stored in the session

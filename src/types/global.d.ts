@@ -1,10 +1,12 @@
+import { RedisClientType } from "redis";
 import { IConsumer } from "./interfaces/kafka.interface";
 
 export { };
 declare global {
   namespace NodeJS {
-    // interface Process {
-    // }
+    interface Process {
+      redis: RedisClientType | undefined;
+    }
     interface ProcessEnv {
       PORT_HTTP: string
       PORT_HTTPS: string

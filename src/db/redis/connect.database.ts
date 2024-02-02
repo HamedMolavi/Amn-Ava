@@ -1,16 +1,17 @@
 import { createClient, RedisClientType } from 'redis';
 
 // Connect to the database 
-async function connect(dbUri: string): Promise<RedisClientType> {
+async function connect(dbUri: string) {
     //create redis client
     const client: RedisClientType = createClient({ url: dbUri });
     //connect to redis
-    client.connect().then(() => {
+    return client.connect().then(() => {
         console.log('Connected to Redis');
+        return client;
     }).catch(err => {
         console.log('Redis Connection : ' + err);
+        return undefined;
     });
-    return client;
 };
 
 export default connect;

@@ -3,19 +3,15 @@ import session, { Store } from "express-session";
 import { createClient, RedisClientType } from 'redis';
 
 
-export default async function redisStore(prefix?: string): Promise<Store | undefined> {
-  // Initialize client.
-  let redisClient = createClient({ url: process.env["REDIS_URL"] });
-  return redisClient.connect().then(() => {
+export default function redisStore(prefix?: string): Store | undefined {
+  if (!!process["redis"])
     // Initialize store.
     return new RedisStore({
-      client: redisClient,
+      client: process["redis"],
       prefix: prefix ?? "Bearer ",
-    });
-  }).catch((error) => {
-    console.error("Redis:", error.code, "=> Express-session on memory!");
-    return undefined; // "MemoryStore"
-  });
+    })
+  console.error("X Express-session on memory!");
+  return undefined;
 };
 
 

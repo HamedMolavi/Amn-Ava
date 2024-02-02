@@ -1,17 +1,8 @@
 import session from "express-session";
 import redisStore from "../db/redis/store.database";
 
-let store;
-try {
-  (async () => {
-    store = await redisStore();
-  })();
-} catch (error) {
-  console.error('Failed to initialize Redis store:', error);
-};
-
 export const sessionMiddleware = session({
-  store,
+  store: redisStore(),
   name: "Bearer",
   secret: process.env["SESSION_SECRET"],
   resave: false,//if you want to keep the session in case of user activity, set these both to true.

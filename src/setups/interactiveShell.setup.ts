@@ -2,13 +2,14 @@ import { spawn } from "child_process";
 //TODO: add more commands
 const stdin = process.stdin;
 let watchInterval: NodeJS.Timeout | undefined = undefined;
-export async function setupInteractive(): Promise<void> {
+export async function setupInteractive(): Promise<(action: string) => Promise<void>> {
   // Setup Interactive stdin
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', function (key: string) {
     act(key.trim());
   });
+  return act;
 };
 
 async function act(action: string) {

@@ -5,6 +5,7 @@ import { IUser } from "../types/interfaces/user.interface";
 
 export default async () => {
   let user = await makeSeedUser();
+  return {user};
 };
 
 async function makeSeedUser(): Promise<IUser | undefined> {
