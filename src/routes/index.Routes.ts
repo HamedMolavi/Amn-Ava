@@ -2,6 +2,7 @@ import { Router } from "express";
 import usersRoutes from "./user/index.Routes";
 import chatsRoutes from "./chat/index.Routes";
 import messagesRoutes from "./message/index.Routes";
+import contactsRoutes from "./contact/index.Routes";
 import authRoutes from "./auth/index.Routes";
 
 import { passportGate } from "../authentication/authorize.auth";
@@ -18,5 +19,6 @@ router.use(passportGate);
 router.use("/users", usersRoutes);
 router.use("/chats", chatsRoutes);
 router.use("/messages", messagesRoutes);
+router.use("/contacts", contactsRoutes);
 
 export default router;
