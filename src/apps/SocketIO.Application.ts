@@ -6,7 +6,7 @@ import passport from "passport";
 import { wrapMiddlewareForSocketIo } from "../tools/socket.tools";
 import { Http2SecureServer } from "http2";
 import { authHeaderExtraction } from "../middleware/auth.middleware";
-import { sessionMiddleware } from "../middleware/session.middleware";
+import { makeSessionMiddleware } from "../middleware/session.middleware";
 import { setupLogger } from "../middleware/logger.middleware";
 
 export function WebSocketServer(httpServer: http.Server) {
@@ -29,7 +29,7 @@ export function WebSocketServer(httpServer: http.Server) {
 
   //authorize user
   io.use(wrapMiddlewareForSocketIo(authHeaderExtraction))
-  io.use(wrapMiddlewareForSocketIo(sessionMiddleware));
+  io.use(wrapMiddlewareForSocketIo(makeSessionMiddleware()));
   io.use(wrapMiddlewareForSocketIo(passport.initialize()));
   io.use(wrapMiddlewareForSocketIo(passport.session()));
   io.use(wrapMiddlewareForSocketIo(passportGate));
@@ -45,6 +45,11 @@ export function WebSocketServer(httpServer: http.Server) {
 
 
   async function joinRoom(socket: Socket): Promise<void> {
+    if (!socket.handshake.headers["chatid"]) socket.disconnect();
+    else {
+      socket.join(socket.handshake.headers["chatid"]);
+      socket.on
+    }
     return;
   };
   function disconnect(socket: Socket, _reason: DisconnectReason, _description?: any) {

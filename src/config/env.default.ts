@@ -17,7 +17,7 @@ const defaults: DefaultEnv = {
   "PORT_HTTPS": "3000",
   "HOST": "127.0.0.1",
   "BASE_URL": "127.0.0.1:3000/api/v1",
-  "MONGODB_URL": "mongodb://localhost:27017/test",
+  "MONGODB_URL": "mongodb://localhost:27017/test?directConnection=true",
   "REDIS_URL": "redis://localhost:6379",
   "REQUEST_LOG_FORMAT": "",
   "REQUEST_LOG_DIR": "../logs",

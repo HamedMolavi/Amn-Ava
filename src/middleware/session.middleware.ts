@@ -1,7 +1,7 @@
 import session from "express-session";
 import redisStore from "../db/redis/store.database";
 
-export const sessionMiddleware = session({
+export const makeSessionMiddleware = () => session({
   store: redisStore(),
   name: "Bearer",
   secret: process.env["SESSION_SECRET"],

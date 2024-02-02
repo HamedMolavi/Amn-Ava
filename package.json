@@ -70,6 +70,7 @@
     "redis": "^4.1.0",
     "rotating-file-stream": "^3.0.3",
     "socket.io": "^4.5.1",
+    "socket.io-client": "^4.7.4",
     "supertest": "^6.2.3",
     "ts-node": "^10.7.0"
   },

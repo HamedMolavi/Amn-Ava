@@ -15,8 +15,7 @@ async function makeSeedUser(): Promise<IUser | undefined> {
       lastName: 'admin',
       username: 'admin',
       password: 'admin',
-      phoneNumber: '09330379999',
-      role: 'admin',
+      email: 'admin@gmail.com'
     });
     console.log("\t++ Seed data user: username=admin, password=admin");
     return users[0];

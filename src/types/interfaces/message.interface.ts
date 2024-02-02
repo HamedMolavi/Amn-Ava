@@ -1,9 +1,9 @@
 import mongoose, { Document } from "mongoose";
 
 export interface IMessage extends Document {
-  _id: mongoose.Schema.Types.ObjectId;
+  _id: mongoose.Types.ObjectId;
   msg: string;
-  chatId: mongoose.Schema.Types.ObjectId;
-  senderId: mongoose.Schema.Types.ObjectId;
+  chatId: mongoose.Types.ObjectId;
+  senderId: mongoose.Types.ObjectId;
   sentAt: number;
 };

@@ -63,7 +63,7 @@ export function setupLogger(prefix?:string) {
           tokens.method(req, res),
           tokens.url(req, res),
           "user id: " + req.user?._id,
-          "errors: " + JSON.stringify(req.flash("error")),
+          // "errors: " + JSON.stringify(req.flash("error")),
           "headers: " + JSON.stringify(req.headers),
           "cookies: " + JSON.stringify(req.cookies),
           "request body: " + JSON.stringify(req.body),
