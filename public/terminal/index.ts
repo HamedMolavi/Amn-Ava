@@ -57,7 +57,7 @@ async function act(action: string) {
     }
     //------------------------------------------------------------------//
     case ["register", "login"].includes(action): {
-      loadUser(action === "register");
+      await loadUser(action === "register");
       for (const fill of ['chats', 'contacts'] as Routes[]) {
         let list = await pgpd(fill, {
           param: fill === "contacts" ? info.me?._id
@@ -277,19 +277,21 @@ async function enableSocket() {
     process.stdin.removeAllListeners("data");
     enableActions();
   }));
+  socket.on("message", (data)=>{
+    console.log("New msg", data)
+  })
 
   // Event listener for successful connection
   socket.on('connect', () => {
     printMessages();
     process.stdin.on('data', function (key: string) {
       switch (key.trim()) {
-        case "back":
+        case "!back":
           socket.disconnect();
           console.log("back to main!")
           break;
-        case "":
-          break;
         default:
+          socket.emit("message", key)
           break;
       }
     });

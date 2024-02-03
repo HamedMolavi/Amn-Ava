@@ -45,10 +45,13 @@ export function WebSocketServer(httpServer: http.Server) {
 
 
   async function joinRoom(socket: Socket): Promise<void> {
-    if (!socket.handshake.headers["chatid"]) socket.disconnect();
+    if (!socket.handshake.headers["chatid"] || typeof socket.handshake.headers["chatid"] !== "string") socket.disconnect();
     else {
       socket.join(socket.handshake.headers["chatid"]);
-      socket.on
+      socket.on("message", (data)=>{
+        console.log(data);
+        io.to(socket.handshake.headers["chatid"] as string).emit("message", data);
+      })
     }
     return;
   };

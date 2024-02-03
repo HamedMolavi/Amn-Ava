@@ -10,6 +10,7 @@ import { passportGate } from "../authentication/authorize.auth";
 const router: Router = Router();
 
 //routes in which verification is not needed
+router.use("", (req, res, next)=>next());
 router.use("/auth", authRoutes);
 
 //middleware for check and verify token
