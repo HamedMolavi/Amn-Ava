@@ -8,6 +8,7 @@ import { Http2SecureServer } from "http2";
 import { authHeaderExtraction } from "../middleware/auth.middleware";
 import { makeSessionMiddleware } from "../middleware/session.middleware";
 import { setupLogger } from "../middleware/logger.middleware";
+import Message from "../db/mongo/models/message";
 
 export function WebSocketServer(httpServer: http.Server) {
   // run http websocket
@@ -48,8 +49,8 @@ export function WebSocketServer(httpServer: http.Server) {
     if (!socket.handshake.headers["chatid"] || typeof socket.handshake.headers["chatid"] !== "string") socket.disconnect();
     else {
       socket.join(socket.handshake.headers["chatid"]);
-      socket.on("message", (data)=>{
-        console.log(data);
+      socket.on("message", (data) => {
+        Message.create(JSON.parse(data)).catch((err) => console.error("Faild to save the message", data, "\n", err));
         io.to(socket.handshake.headers["chatid"] as string).emit("message", data);
       })
     }
